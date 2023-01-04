@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 :root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,4 +21,35 @@ body {
   font-size: 18px;
 }
 
+.main-header{
+  position: relative;
+}
+
+.layers{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.layer{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+
+}
+
+$value: calc(var(--scrollTop) * 0.5);
+
+//.layers__base{
+//  value: $value;
+//  transform: translate3d(0, value, 0);
+//}
+
+.main-article{
+  min-height: 100vh;
+}
 
