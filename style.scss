@@ -1,6 +1,5 @@
-@use 'sass:math';
-
 :root {
+  --index: calc(1vw + 1vh);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -25,12 +24,28 @@ body {
   position: relative;
 }
 
+.main-header::after{
+  content: '';
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: calc(var(--index) * 10);
+  background-image: url(../public/img/ground.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  bottom: calc(var(--index) * -4.5);
+}
+
 .layers{
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  overflow: hidden;
+  position: relative;
+
 }
 
 .layer{
@@ -39,15 +54,47 @@ body {
   position: absolute;
   background-size: cover;
   background-position: center;
-
+  will-change: transform;
+  z-index: 2;
 }
 
-$value: calc(var(--scrollTop) * 0.5);
+$value-base: calc(var(--scrollTop) / 1.6);
+.layers__base{
+  transform: translate3d(0, $value-base, 0);
+  z-index: 0;
+}
 
-//.layers__base{
-//  value: $value;
-//  transform: translate3d(0, value, 0);
-//}
+$value-middle: calc(var(--scrollTop) / 2.5);
+.layers__middle{
+  transform: translate3d(0, $value-middle, 0);
+}
+
+$value-front: calc(var(--scrollTop) / 5.7);
+.layers__middle{
+  transform: translate3d(0, $value-front, 0);
+}
+
+$value-header: calc(var(--scrollTop) / 2);
+.layer__header{
+  z-index: 1;
+  transform: translate3d(0, $value-header, 0);
+  will-change: transform;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #e7e7e0;
+  text-shadow: 0 0 15px #8D6D29;
+}
+
+.layers__title{
+  font-size: calc(var(--index) * 2.5);
+  letter-spacing: calc(var(--index) / 2.25);
+}
+
+.layers__caption{
+  font-size: calc(var(--index) / 1.175);
+  letter-spacing: calc(var(--index) / 3.5);
+  margin-top: calc(var(--index) * -.75);
+}
 
 .main-article{
   min-height: 100vh;
