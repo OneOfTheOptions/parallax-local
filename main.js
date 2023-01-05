@@ -18,7 +18,7 @@ document.querySelector('#app').innerHTML = `
     <article class="main-article" style="background-image: url(/img/dungeon.jpg)">
         <div class="main-article__content">
             <h2 class="main-article__header">To be continued</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis dolor earum id incidunt magnam mollitia nihil, officiis velit? Cumque delectus, dolore esse fugit hic in iure laudantium mollitia natus odio veniam, vero.</p>
+            <p class="main-article__paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis dolor earum id incidunt magnam mollitia nihil, officiis velit? Cumque delectus, dolore esse fugit hic in iure laudantium mollitia natus odio veniam, vero. Lorem ipsum dolor sit amet, consectetur adipisicing elit... </p>
         </div>
         <div class="copy">© Parallax</div>
     </article>
