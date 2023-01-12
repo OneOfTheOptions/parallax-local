@@ -1,4 +1,11 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
+  --transition: transform .75s cubic-bezier(.075, .5, 0, 1);
   --index: calc(1vw + 1vh);
   --text: #e7e7e0;
   font-synthesis: none;
@@ -8,17 +15,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
-#app {
-  width: 1980px;
-  margin: 0 auto;
-}
-
 body {
   background-color: #010101;
-  color: #fff;
   font-family: raleway_R, serif;
   line-height: 1.55;
-  font-size: 18px;
 }
 
 .main-header{
@@ -30,35 +30,13 @@ body {
     z-index: 100;
     width: 100%;
     height: calc(var(--index) * 10);
-    background-image: url(/public/img/ground.png);
+    background-image: url(../img/ground.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     bottom: calc(var(--index) * -4.5);
   }
 }
-
-.layer{
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  background-size: cover;
-  background-position: center;
-  will-change: transform;
-  z-index: 2;
-
-  $value-header: calc(var(--scrollTop) / 2);
-  &__header{
-    z-index: 1;
-    transform: translate3d(0, $value-header, 0);
-    will-change: transform;
-    text-transform: uppercase;
-    font-weight: 900;
-    color: var(--text);
-    text-shadow: 0 0 15px #8D6D29;
-  }
-}
-
 
 .layers{
   height: 100vh;
@@ -76,8 +54,31 @@ body {
   }
 
   &__title{
-    font-size: calc(var(--index) * 2.5);
+    font-size: calc(var(--index) * 2.65);
     letter-spacing: calc(var(--index) / 2.25);
+  }
+}
+
+.layer{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+  z-index: 2;
+  transition: var(--transition);
+
+  $value-header: calc(var(--scrollTop) / 2);
+  &__header{
+    z-index: 1;
+    transform: translate3d(0, $value-header, 0);
+    transition: var(--transition);
+    will-change: transform;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: var(--text);
+    text-shadow: 0 0 15px #8D6D29;
   }
 }
 
@@ -93,7 +94,7 @@ $value-middle: calc(var(--scrollTop) / 2.5);
 }
 
 $value-front: calc(var(--scrollTop) / 5.7);
-.layers__middle{
+.layers__front{
   transform: translate3d(0, $value-front, 0);
 }
 
@@ -107,10 +108,13 @@ $value-front: calc(var(--scrollTop) / 5.7);
   background-position: center;
   color: var(--text);
   text-align: center;
+  top: -1px;
+  z-index: 10;
 
   $value-paragraph: calc(var(--scrollTop) / -7.5);
   &__paragraph{
     transform: translate3d(0, $value-paragraph, 0);
+    transition: var(--transition);
     margin-top: calc(var(--index) / 1.25);
     max-width: calc(var(--index) * 30);
     font-size: calc(var(--index) * .9);
@@ -121,11 +125,16 @@ $value-front: calc(var(--scrollTop) / 5.7);
   $value-header: calc(var(--scrollTop) / -7.5);
   &__header{
     transform: translate3d(0, $value-header, 0);
+    transition: var(--transition);
     text-transform: uppercase;
     font-size: calc(var(--index) * 1.8);
     letter-spacing: calc(var(--index) / 7.5);
     will-change: transform;
   }
+}
+
+.content {
+  will-change: transform;
 }
 
 .copy{
